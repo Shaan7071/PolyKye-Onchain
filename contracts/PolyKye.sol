@@ -4,7 +4,7 @@ pragma solidity ^0.8.20;
 contract PolyKye {
     // Events
     event TargetSubmitted(address indexed user, uint indexed targetId, string target);
-    event ResultSubmitted(uint indexed targetId, string ligandSmiles, string synthesisIpfsHash, uint score);
+    event ResultSubmitted(uint indexed targetId, string ligandSmiles, string ipfsHash);
 
     // Structures
     struct TargetSubmission {
@@ -15,11 +15,9 @@ contract PolyKye {
     }
 
     struct Result {
-        string ligandSmiles;
-        string synthesisIpfsHash;
-        uint score;
+        string ligandSMILES;       // Just the SMILES string
+        string ipfsHash;     // All other data stored in IPFS
         uint timestamp;
-        address submitter;
     }
 
     // State Variables
@@ -40,44 +38,37 @@ contract PolyKye {
         emit TargetSubmitted(msg.sender, targetId, target);
     }
 
-    // Submit a result after off-chain computation
+     // Submit a result after off-chain computation
     function submitResult(
         uint targetId,
-        string memory ligandSmiles,
-        string memory synthesisIpfsHash,
-        uint score
+        string memory smiles,
+        string memory ipfsHash
     ) public {
         require(targetId < targetCount, "Invalid targetId");
         require(!targets[targetId].processed, "Already processed");
 
         results[targetId] = Result({
-            ligandSmiles: ligandSmiles,
-            synthesisIpfsHash: synthesisIpfsHash,
-            score: score,
-            timestamp: block.timestamp,
-            submitter: msg.sender
+            ligandSMILES: smiles,
+            ipfsHash: ipfsHash,
+            timestamp: block.timestamp
         });
 
         targets[targetId].processed = true;
 
-        emit ResultSubmitted(targetId, ligandSmiles, synthesisIpfsHash, score);
+        emit ResultSubmitted(targetId, smiles, ipfsHash);
     }
 
     // Retrieve result data for a target
     function getResult(uint targetId) public view returns (
-        string memory ligandSmiles,
-        string memory synthesisIpfsHash,
-        uint score,
-        uint timestamp,
-        address submitter
+        string memory ligandSMILES,
+        string memory ipfsHash,
+        uint timestamp
     ) {
         Result storage result = results[targetId];
         return (
-            result.ligandSmiles,
-            result.synthesisIpfsHash,
-            result.score,
-            result.timestamp,
-            result.submitter
+            result.ligandSMILES,
+            result.ipfsHash,
+            result.timestamp
         );
     }
 }
