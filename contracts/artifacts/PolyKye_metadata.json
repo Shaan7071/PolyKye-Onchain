@@ -6,6 +6,17 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_initialFee",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -23,14 +34,8 @@
 					{
 						"indexed": false,
 						"internalType": "string",
-						"name": "synthesisIpfsHash",
+						"name": "ipfsHash",
 						"type": "string"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "score",
-						"type": "uint256"
 					}
 				],
 				"name": "ResultSubmitted",
@@ -73,27 +78,30 @@
 				"outputs": [
 					{
 						"internalType": "string",
-						"name": "ligandSmiles",
+						"name": "ligandSMILES",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "synthesisIpfsHash",
+						"name": "ipfsHash",
 						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "score",
-						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
 						"name": "timestamp",
 						"type": "uint256"
-					},
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
 					{
 						"internalType": "address",
-						"name": "submitter",
+						"name": "",
 						"type": "address"
 					}
 				],
@@ -112,28 +120,31 @@
 				"outputs": [
 					{
 						"internalType": "string",
-						"name": "ligandSmiles",
+						"name": "ligandSMILES",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "synthesisIpfsHash",
+						"name": "ipfsHash",
 						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "score",
-						"type": "uint256"
 					},
 					{
 						"internalType": "uint256",
 						"name": "timestamp",
 						"type": "uint256"
-					},
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "submissionFee",
+				"outputs": [
 					{
-						"internalType": "address",
-						"name": "submitter",
-						"type": "address"
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -148,18 +159,13 @@
 					},
 					{
 						"internalType": "string",
-						"name": "ligandSmiles",
+						"name": "smiles",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "synthesisIpfsHash",
+						"name": "ipfsHash",
 						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "score",
-						"type": "uint256"
 					}
 				],
 				"name": "submitResult",
@@ -183,7 +189,7 @@
 						"type": "uint256"
 					}
 				],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			},
 			{
@@ -232,6 +238,26 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_newFee",
+						"type": "uint256"
+					}
+				],
+				"name": "updateSubmissionFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawFees",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
@@ -262,11 +288,11 @@
 	},
 	"sources": {
 		"contracts/PolyKye.sol": {
-			"keccak256": "0x035d4b3c8b1b47640c5fc5bc631f3d1af3a6413042950ed5adf971021f8af077",
+			"keccak256": "0xaa6b39fa6e95e3e1e84240a8135351f2212017b07534f63e53f5fe372fea2a6b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://aa58763739a7cb2b942bbe7e4a0f038e7eaae3b72246f2990eb109b833bf0249",
-				"dweb:/ipfs/QmYc2DE6vnohje5evReo5cb7va38Zz7yPPw81HPZeh4vvQ"
+				"bzz-raw://69de4af793d9bc83797d57ac4bec8b8d3e8dee21ed89b80e508bb3e3f3454808",
+				"dweb:/ipfs/QmQa8EC5JTjy6Us7vaa1LBRtbWymbF1Ze6nqUXwoTQTzmi"
 			]
 		}
 	},

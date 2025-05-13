@@ -23,19 +23,47 @@ contract PolyKye {
     // State Variables
     mapping(uint => TargetSubmission) public targets;
     mapping(uint => Result) public results;
+    address public owner;
     uint public targetCount;
+    uint256 public submissionFee;
 
-    // Submit a new disease target
-    function submitTarget(string memory target) public returns (uint targetId) {
+    // Constructor to set values of state variables
+    constructor(uint256 _initialFee) {
+        submissionFee = _initialFee;
+        owner = msg.sender;
+    }
+
+    // Modifier to only allow the owner of this contract to perform certain actions
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Only the owner can perform this action");
+        _;
+    }
+
+    // Owner function to update the fee
+    function updateSubmissionFee(uint256 _newFee) public onlyOwner {
+        submissionFee = _newFee;
+    }
+
+    // Owner function to allow withdrawal of collected fees
+    function withdrawFees() public onlyOwner {
+        uint256 balance = address(this).balance;
+        require(balance > 0, "No fees to withdraw");
+        payable(owner).transfer(balance);
+    }
+
+    // submitTarget function with paywall
+    function submitTarget(string memory target) public payable returns (uint targetId) {
+        // Check if the sent amount is sufficient
+        require(msg.value >= submissionFee, "Insufficient payment for target submission");
+        // Create the target submission
         targetId = targetCount++;
-        targets[targetId] = TargetSubmission({
-            user: msg.sender,
-            target: target,
-            timestamp: block.timestamp,
-            processed: false
-        });
-
+        targets[targetId] = TargetSubmission(msg.sender, target, block.timestamp, false);
         emit TargetSubmitted(msg.sender, targetId, target);
+        // Return excess payment if any
+        uint256 excess = msg.value - submissionFee;
+        if (excess > 0) {
+            payable(msg.sender).transfer(excess);
+        }
     }
 
      // Submit a result after off-chain computation
