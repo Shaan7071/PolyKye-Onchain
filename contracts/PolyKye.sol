@@ -71,7 +71,7 @@ contract PolyKye {
         uint targetId,
         string memory smiles,
         string memory ipfsHash
-    ) public {
+    ) public onlyOwner{
         require(targetId < targetCount, "Invalid targetId");
         require(!targets[targetId].processed, "Already processed");
 
