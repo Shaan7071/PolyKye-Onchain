@@ -29,10 +29,7 @@ body {
 }
 
 .app-background {
-  background-image: url('/src/assets/mountain-background.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: #003333; /* Canurta Green */
   min-height: 100vh;
 }
 
@@ -152,8 +149,8 @@ body {
 }
 
 .canurta-logo {
-  height: 250px;
-  max-width: 800px;
+  height: 50px;
+  width: auto;
   object-fit: contain;
   margin-top: 10px;
 }

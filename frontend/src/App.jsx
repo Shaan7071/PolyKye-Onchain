@@ -3,7 +3,7 @@ import './App.css'
 import WalletConnection from './components/WalletConnection'
 import MoleculeViewer from './components/MoleculeViewer'
 import TargetSubmissionForm from './components/TargetSubmissionForm'
-import canurtaLogo from './assets/canurta_logo.jpg'
+import canurtaLogo from './assets/canurta_logo.png'
 
 function App() {
   const [signer, setSigner] = useState(null)
