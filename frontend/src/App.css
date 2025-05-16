@@ -1,139 +1,183 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+:root {
+  --primary-color: #c5d547; /* Canurta's yellowish-green */
+  --dark-bg: #1a2a1a; /* Dark green background */
+  --text-light: #ffffff;
+  --accent-color: #4a5af7; /* Your existing blue accent */
+  --section-bg: rgba(255, 255, 255, 0.05);
+  --gradient-start: rgba(26, 42, 26, 0.95);
+  --gradient-end: rgba(26, 42, 26, 0.85);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-light);
+  background-color: #121212;
+  margin: 0;
+  padding: 0;
 }
 
 .app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-background {
+  background-image: url('https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.app-overlay {
+  background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  padding: 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.hero-section {
+  max-width: 800px;
+  margin: 40px auto;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-section h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.hero-section p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.tab-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .app-nav {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  gap: 20px;
 }
 
 .app-nav button {
-  padding: 0.5rem 1rem;
-  margin: 0 0.5rem;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
   border: none;
-  background: none;
+  border-radius: 6px;
+  color: var(--text-light);
   cursor: pointer;
-  font-size: 1rem;
-  border-bottom: 2px solid transparent;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.app-nav button:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .app-nav button.active {
-  border-bottom: 2px solid #646cff;
-  color: #646cff;
+  background-color: var(--primary-color);
+  color: var(--dark-bg);
+  font-weight: 600;
 }
 
-.wallet-connection {
-  display: flex;
-  align-items: center;
-}
-
-.connect-button {
-  background-color: #646cff;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.wallet-info {
-  text-align: right;
-}
-
-.molecule-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1rem;
-}
-
-.molecule-card {
-  background-color: white;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: left;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.form-group input {
+.app-main {
+  flex: 1;
+  max-width: 800px;
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  margin: 0 auto 40px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.error-message {
-  color: red;
-  margin-bottom: 1rem;
+.app-footer {
+  margin-top: auto;
+  padding: 20px;
+  text-align: center;
 }
 
-.transaction-info {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: #f0f0f0;
-  border-radius: 4px;
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.canurta-logo {
+  height: 250px;
+  max-width: 800px;
+  object-fit: contain;
+  margin-top: 10px;
+}
+
+.partnership {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .hero-section h1 {
+    font-size: 32px;
+  }
+  
+  .app-main {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
 }
