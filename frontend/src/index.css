@@ -1,17 +1,25 @@
+@font-face {
+  font-family: 'Mark OT';
+  src: url('./assets/fonts/MarkOT.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Mark OT', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #1a2a1a;
+  background-color: #003333; /* Canurta Green */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 
 body {
   margin: 0;
@@ -22,3 +30,5 @@ body {
 button {
   cursor: pointer;
 }
+
+
