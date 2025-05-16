@@ -29,12 +29,13 @@ body {
 }
 
 .app-background {
-  background-image: url('https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
+  background-image: url('/src/assets/mountain-background.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   min-height: 100vh;
 }
+
 
 .app-overlay {
   background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
