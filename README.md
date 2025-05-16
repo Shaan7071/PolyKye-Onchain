@@ -1,4 +1,4 @@
-# PolyKye Marketplace
+# PolyKye Onchain
 
 This repository contains the blockchain and frontend components for the PolyKye Onchain system, which allows users to submit disease targets, process them through an AI platform, and store results on the blockchain for transparency and provenance.
 
